@@ -23,9 +23,8 @@ pub fn solve_day1_part2(input: &[i64]) -> i64 {
     input
         .windows(3)
         .map(|win| win.iter().sum::<i64>())
-        .collect_vec()
-        .windows(2)
-        .map(|win| if win[1] > win[0] { 1 } else { 0 })
+        .tuple_windows::<(i64, i64)>()
+        .map(|win| if win.1 > win.0 { 1 } else { 0 })
         .sum()
 }
 
