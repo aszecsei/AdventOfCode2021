@@ -47,7 +47,7 @@ pub fn input_generator_day2(input: &str) -> Vec<Instruction> {
         .map(|x| {
             let spl = x.split(' ').collect_vec();
             let dist = spl[1].trim().parse().unwrap();
-            match spl[0] {
+            match spl[0].trim() {
                 "forward" => Instruction::Forward(dist),
                 "down" => Instruction::Down(dist),
                 "up" => Instruction::Up(dist),
