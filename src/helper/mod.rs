@@ -1,3 +1,6 @@
+use std::fmt::Debug;
+use std::str::FromStr;
+
 pub fn replace_with<T>(list: &mut Vec<T>, replace: &[T], with: &[T]) -> bool
 where
     T: PartialEq<T> + Clone,
