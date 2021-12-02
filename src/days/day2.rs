@@ -1,6 +1,5 @@
 use aoc_runner_derive::{aoc, aoc_generator};
 use itertools::Itertools;
-use regex::internal::Inst;
 
 #[derive(Copy, Clone)]
 pub enum Instruction {
@@ -65,10 +64,7 @@ impl Position {
 
 #[aoc_generator(day2)]
 pub fn input_generator_day2(input: &str) -> Vec<Instruction> {
-    input
-        .lines()
-        .map(|x| Instruction::parse(x))
-        .collect()
+    input.lines().map(|x| Instruction::parse(x)).collect()
 }
 
 #[aoc(day2, part1)]
@@ -83,4 +79,26 @@ pub fn solve_day2_part2(input: &[Instruction]) -> i64 {
     let mut pos = Position::default();
     input.iter().for_each(|&instr| pos.apply_day2(instr));
     pos.get_multiplied()
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use pretty_assertions::{assert_eq, assert_ne};
+
+    const DATA: &str = "forward 5\ndown 5\nforward 8\nup 3\ndown 8\nforward 2";
+
+    #[test]
+    fn test_day2_part1() {
+        let data = input_generator_day2(DATA);
+        let result = solve_day2_part1(&data);
+        assert_eq!(result, 150);
+    }
+
+    #[test]
+    fn test_day2_part2() {
+        let data = input_generator_day2(DATA);
+        let result = solve_day2_part2(&data);
+        assert_eq!(result, 900);
+    }
 }
