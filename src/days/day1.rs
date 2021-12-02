@@ -12,10 +12,7 @@ pub fn input_generator_day1(input: &str) -> Vec<i64> {
 
 #[aoc(day1, part1)]
 pub fn solve_day1_part1(input: &[i64]) -> i64 {
-    input
-        .windows(2)
-        .filter(|win| win[0] < win[1])
-        .count() as i64
+    input.windows(2).filter(|win| win[0] < win[1]).count() as i64
 }
 
 pub fn solve_day1_part1_no_collect(input: &str) -> i64 {
@@ -30,10 +27,7 @@ pub fn solve_day1_part1_no_collect(input: &str) -> i64 {
 
 #[aoc(day1, part2)]
 pub fn solve_day1_part2(input: &[i64]) -> i64 {
-    input
-        .windows(4)
-        .filter(|win| win[0] < win[3])
-        .count() as i64
+    input.windows(4).filter(|win| win[0] < win[3]).count() as i64
 }
 
 pub fn solve_day1_part2_no_collect(input: &str) -> i64 {
