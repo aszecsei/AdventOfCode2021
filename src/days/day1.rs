@@ -1,5 +1,4 @@
 use aoc_runner_derive::{aoc, aoc_generator};
-use itertools::Itertools;
 
 // ======================================================
 // DAY 1
@@ -15,34 +14,9 @@ pub fn solve_day1_part1(input: &[i64]) -> i64 {
     input.windows(2).filter(|win| win[0] < win[1]).count() as i64
 }
 
-pub fn solve_day1_part1_no_collect(input: &str) -> i64 {
-    input
-        .lines()
-        .map(|x| x.trim().parse::<i64>().unwrap())
-        .fold((0, None), |(acc, a), b| {
-            (if a.unwrap_or(b) < b { acc + 1 } else { acc }, Some(b))
-        })
-        .0
-}
-
 #[aoc(day1, part2)]
 pub fn solve_day1_part2(input: &[i64]) -> i64 {
     input.windows(4).filter(|win| win[0] < win[3]).count() as i64
-}
-
-pub fn solve_day1_part2_no_collect(input: &str) -> i64 {
-    input
-        .lines()
-        .map(|x| x.trim().parse::<i64>().unwrap())
-        .fold((0, None, None, None), |(acc, a, b, c), d| {
-            (
-                if a.unwrap_or(d) < d { acc + 1 } else { acc },
-                b,
-                c,
-                Some(d),
-            )
-        })
-        .0
 }
 
 #[cfg(test)]

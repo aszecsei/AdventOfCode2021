@@ -1,6 +1,4 @@
-use std::fmt::Debug;
-use std::str::FromStr;
-
+#[allow(dead_code)]
 pub fn replace_with<T>(list: &mut Vec<T>, replace: &[T], with: &[T]) -> bool
 where
     T: PartialEq<T> + Clone,
@@ -18,6 +16,7 @@ where
     false
 }
 
+#[allow(dead_code)]
 pub fn replace_all_with<T>(list: &mut Vec<T>, replace: &[T], with: &[T])
 where
     T: PartialEq<T> + Clone,
