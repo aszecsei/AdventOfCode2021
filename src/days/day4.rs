@@ -116,21 +116,14 @@ pub fn solve_day4_part2(game_data: &BingoProblem) -> u32 {
     let mut boards = game_data.boards.clone();
 
     for &n in numbers {
-        let mut idx_to_remove = vec![];
-        let num_boards = boards.len();
-        for (idx, b) in boards.iter_mut().enumerate() {
+        let board_len = boards.len();
+        for b in boards.iter_mut() {
             b.mark(n);
-            if b.win() {
-                if num_boards - idx_to_remove.len() == 1 {
-                    return n * b.unmarked_sum();
-                } else {
-                    idx_to_remove.push(idx);
-                }
+            if board_len == 1 {
+                return n * b.unmarked_sum();
             }
         }
-        for idx in idx_to_remove.into_iter().rev() {
-            boards.remove(idx);
-        }
+        boards.retain(|b| !b.win());
     }
     unreachable!();
 }
