@@ -66,7 +66,7 @@ pub fn solve_day3_part2((input, len): &(Vec<u16>, u8)) -> u32 {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use pretty_assertions::{assert_eq, assert_ne};
+    use pretty_assertions::assert_eq;
 
     const DATA: &str =
         "00100\n11110\n10110\n10111\n10101\n01111\n00111\n11100\n10000\n11001\n00010\n01010";

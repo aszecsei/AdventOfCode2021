@@ -84,7 +84,7 @@ pub fn solve_day2_part2(input: &[Instruction]) -> i64 {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use pretty_assertions::{assert_eq, assert_ne};
+    use pretty_assertions::assert_eq;
 
     const DATA: &str = "forward 5\ndown 5\nforward 8\nup 3\ndown 8\nforward 2";
 
