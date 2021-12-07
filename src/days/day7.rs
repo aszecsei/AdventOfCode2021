@@ -20,7 +20,7 @@ pub fn solve_day7_part1(input: &[u32]) -> u32 {
 pub fn solve_day7_part2(input: &[u32]) -> u32 {
     // Average is close but not guaranteed (at most off by one for input ranges given...)
     // but this is the slower, more general solution
-    
+
     let get_cost = |pos: u32| -> u32 {
         input
             .iter()
@@ -29,9 +29,9 @@ pub fn solve_day7_part2(input: &[u32]) -> u32 {
             .sum()
     };
 
-    let pos = (0..*input.iter().max().unwrap()).min_by(|&a, &b| {
-        get_cost(a).cmp(&get_cost(b))
-    }).unwrap();
+    let pos = (0..*input.iter().max().unwrap())
+        .min_by(|&a, &b| get_cost(a).cmp(&get_cost(b)))
+        .unwrap();
     get_cost(pos)
 }
 
