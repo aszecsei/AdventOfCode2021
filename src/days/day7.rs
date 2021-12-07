@@ -19,7 +19,6 @@ pub fn solve_day7_part1(input: &[u32]) -> u32 {
 #[aoc(day7, part2)]
 pub fn solve_day7_part2(input: &[u32]) -> u32 {
     let avg = input.iter().sum::<u32>() / input.len() as u32;
-    let avg_plus_one = avg + 1;
 
     let get_cost = |pos: u32| {
         input
@@ -29,10 +28,7 @@ pub fn solve_day7_part2(input: &[u32]) -> u32 {
             .sum()
     };
 
-    let avg_cost = get_cost(avg);
-    let avg_plus_one_cost = get_cost(avg_plus_one);
-
-    u32::min(avg_cost, avg_plus_one_cost)
+    u32::min(u32::min(get_cost(avg), get_cost(avg + 1)), get_cost(avg - 1))
 }
 
 #[cfg(test)]
