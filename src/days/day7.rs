@@ -18,9 +18,10 @@ pub fn solve_day7_part1(input: &[u32]) -> u32 {
 
 #[aoc(day7, part2)]
 pub fn solve_day7_part2(input: &[u32]) -> u32 {
-    let avg = input.iter().sum::<u32>() / input.len() as u32;
-
-    let get_cost = |pos: u32| {
+    // Average is close but not guaranteed (at most off by one for input ranges given...)
+    // but this is the slower, more general solution
+    
+    let get_cost = |pos: u32| -> u32 {
         input
             .iter()
             .map(|&n| u32::max(n, pos) - u32::min(n, pos))
@@ -28,7 +29,10 @@ pub fn solve_day7_part2(input: &[u32]) -> u32 {
             .sum()
     };
 
-    u32::min(u32::min(get_cost(avg), get_cost(avg + 1)), get_cost(avg - 1))
+    let pos = (0..*input.iter().max().unwrap()).min_by(|&a, &b| {
+        get_cost(a).cmp(&get_cost(b))
+    }).unwrap();
+    get_cost(pos)
 }
 
 #[cfg(test)]
